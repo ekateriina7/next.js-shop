@@ -1,3 +1,4 @@
+import PostButton from '@/components/post-button';
 import createPost from '@/server/actions/create-post';
 import getPosts from '@/server/actions/get-posts';
 
@@ -8,9 +9,9 @@ export default async function Home() {
   }
   if (success) {
     return (
-      <main>
+      <main className='bg-special'>
         {success.map(post => (
-          <div key={post.id}>{post.title}</div>
+          <div className='py-2 my-1 hover:opacity-15 bg-slate-800' key={post.id}>{post.title}</div>
         ))}
         <form action={createPost}>
           <input
@@ -19,9 +20,7 @@ export default async function Home() {
             name="title"
             placeholder="Title"
           />
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded mt-2">
-            Submit
-          </button>
+         <PostButton/>
         </form>
       </main>
     );
