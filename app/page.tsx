@@ -1,4 +1,5 @@
 import PostButton from '@/components/post-button';
+import { Button } from '@/components/ui/button';
 import createPost from '@/server/actions/create-post';
 import getPosts from '@/server/actions/get-posts';
 
@@ -20,7 +21,8 @@ export default async function Home() {
             name="title"
             placeholder="Title"
           />
-         <PostButton/>
+          <PostButton />
+          <Button>click me</Button>
         </form>
       </main>
     );
