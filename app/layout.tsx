@@ -1,3 +1,4 @@
+import Nav from '@/components/navigation/nav';
 import Link from '@/node_modules/next/link';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  profile
+  profile,
 }: Readonly<{
   children: React.ReactNode;
   profile: React.ReactNode
@@ -21,12 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav>
-          <ul className='flex gap-3 justify-between px-4 bg-blue-400'>
-            <li><Link href='/'>Home</Link></li>
-            <li><Link href='/about'>About</Link></li>
-          </ul>
-        </nav>
+        <Nav />
         {children}
         {isAdmin && profile}
       </body>
