@@ -15,20 +15,18 @@ export const AuthCard = ({
 }: CardWrapperProps) => {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>{cardTitle}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        {children}
-      </CardContent>
-      {showSocials && (
-        <CardFooter>
-          <Socials />
-        </CardFooter>
-      )}
+    <CardHeader>
+      <CardTitle>{cardTitle}</CardTitle>
+    </CardHeader>
+    <CardContent>{children}</CardContent>
+    {showSocials && (
       <CardFooter>
-        <BackButton url={backBtnURL} label={backBtnName} />
+        <Socials />
       </CardFooter>
-    </Card>
+    )}
+    <CardFooter>
+      <BackButton url={backBtnURL} label={backBtnName} />
+    </CardFooter>
+  </Card>
   )
 }

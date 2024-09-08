@@ -10,10 +10,8 @@ type BackBtnType = {
 
 export default function BackButton({ url, label }: BackBtnType) {
   return (
-    <div>
-      <Button className='font-medium w-full'>
+      <Button className="font-medium w-full">
         <Link aria-label={label} href={url}>{label}</Link>
       </Button>
-    </div>
   )
 }
