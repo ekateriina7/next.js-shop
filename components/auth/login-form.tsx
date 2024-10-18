@@ -12,6 +12,7 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { emailSignIn } from '@/server/actions/email-signin';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 export default function LoginForm() {
   const form = useForm({
@@ -22,6 +23,8 @@ export default function LoginForm() {
     }
   })
 
+  const [error, setError] = useState('')
+
   const { execute, status } = useAction(emailSignIn, {
     onSuccess(data) {
       console.log(data);
@@ -31,7 +34,7 @@ export default function LoginForm() {
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     execute(values);
   };
-  
+
   return (
     <AuthCard cardTitle='Welcome back' backBtnURL='/auth/register' backBtnName='Create a new account' showSocials>
       <div><Form {...form}>
@@ -70,12 +73,12 @@ export default function LoginForm() {
             </Button>
           </div>
           <Button
-              type="submit"
-              className={cn(
-                "w-full my-4",
-                status === "executing" ? "animate-pulse" : ""
-              )}
-            >{'Login'}</Button>
+            type="submit"
+            className={cn(
+              "w-full my-4",
+              status === "executing" ? "animate-pulse" : ""
+            )}
+          >{'Login'}</Button>
         </form>
       </Form></div>
     </AuthCard>
