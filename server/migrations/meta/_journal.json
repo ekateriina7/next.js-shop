@@ -15,6 +15,13 @@
       "when": 1725067345020,
       "tag": "0001_previous_kingpin",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1729188731595,
+      "tag": "0002_dapper_groot",
+      "breakpoints": true
     }
   ]
 }
