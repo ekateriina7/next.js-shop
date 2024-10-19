@@ -13,6 +13,7 @@ import { emailSignIn } from '@/server/actions/email-signin';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { RegisterSchema } from '@/app/types/register-schema';
+import { emailRegister } from '@/server/actions/email-register';
 
 export default function RegisterForm() {
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -26,7 +27,7 @@ export default function RegisterForm() {
 
   const [error, setError] = useState('')
 
-  const { execute, status } = useAction(emailSignIn, {
+  const { execute, status } = useAction(emailRegister, {
     onSuccess(data) {
       console.log(data);
     },
@@ -41,7 +42,7 @@ export default function RegisterForm() {
       <div><Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div>
-          <FormField
+            <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
