@@ -14,6 +14,8 @@ import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { RegisterSchema } from '@/app/types/register-schema';
 import { emailRegister } from '@/server/actions/email-register';
+import FormSuccess from './form-success';
+import FormError from './form-error';
 
 export default function RegisterForm() {
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -25,11 +27,17 @@ export default function RegisterForm() {
     }
   })
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('')
 
   const { execute, status } = useAction(emailRegister, {
-    onSuccess(data) {
-      console.log(data);
+    onSuccess({ data }: { data?: { success?: string; error?: string } }) {
+      if (data?.error) {
+        setError(data.error);
+      }
+      if (data?.success) {
+        setSuccess(data.success);
+      }
     },
   });
 
@@ -85,6 +93,8 @@ export default function RegisterForm() {
               )}
             />
           </div>
+          <FormSuccess message={success} />
+          <FormError message={error}/>
           <Button
             type="submit"
             className={cn(
